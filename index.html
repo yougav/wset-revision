@@ -381,10 +381,11 @@ ol.corr{margin:0;padding-left:22px}
 .ws-b{display:flex;gap:10px;flex-wrap:wrap}
 .ws-up{cursor:pointer}
 .ws-panel hr{border:0;border-top:1px solid var(--line);margin:4px 0}
+.ws-ok{color:var(--right)!important;font-weight:600}.ws-err{color:var(--wrong)!important;font-weight:600}
 </style>
 <script>/* WSET Revision standalone: local store + private GitHub repo sync, exposing the same db API the app uses. */
 (function(){
-const APP_VERSION="1.0.0";
+const APP_VERSION="1.0.1";
 const LS="wsetrev.store.v1", CFG="wsetrev.cfg.v1";
 const load=(k,d)=>{ try{ return JSON.parse(localStorage.getItem(k))||d; }catch(e){ return d; } };
 const saveLS=(k,v)=>{ try{ localStorage.setItem(k,JSON.stringify(v)); return true; }catch(e){ return false; } };
@@ -420,26 +421,34 @@ function merge(a,b){ // both {docs,del}
 let pushT=null, syncing=false;
 function schedulePush(){ if(!cfg.repo||!cfg.token) return; clearTimeout(pushT); pushT=setTimeout(()=>sync(),2500); }
 async function gh(method,body){ const url=`https://api.github.com/repos/${cfg.repo}/contents/${encodeURIComponent(cfg.path)}`;
-  const r=await fetch(url+(method==="GET"?`?t=${Date.now()}`:""),{method,headers:{Authorization:"Bearer "+cfg.token,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28",...(body?{"Content-Type":"application/json"}:{})},body:body?JSON.stringify(body):undefined,cache:"no-store"});
-  return r; }
+  const ac=new AbortController(), tm=setTimeout(()=>ac.abort(),20000);
+  try{ return await fetch(url+(method==="GET"?`?t=${Date.now()}`:""),{method,signal:ac.signal,headers:{Authorization:"Bearer "+cfg.token,Accept:"application/vnd.github+json",...(body?{"Content-Type":"application/json"}:{})},body:body?JSON.stringify(body):undefined,cache:"no-store"}); }
+  catch(e){ throw new Error(e.name==="AbortError"?"GitHub didn't answer within 20 seconds":"Couldn't reach GitHub ("+(e.message||e)+")"); }
+  finally{ clearTimeout(tm); } }
 async function sync(){
-  if(!cfg.repo||!cfg.token||syncing||!navigator.onLine) return; syncing=true; setStatus("syncing");
+  if(!cfg.repo||!cfg.token) return "Enter the data repo and token first.";
+  if(!/^[\w.-]+\/[\w.-]+$/.test(cfg.repo)) return "The data repo should look like yougav/wset-revision-data.";
+  if(!navigator.onLine) return "You're offline. Results are saved on the phone and will sync later.";
+  if(syncing) return "A sync is already running.";
+  syncing=true; setStatus("syncing");
   try{
     for(let attempt=0;attempt<3;attempt++){
       let remote={docs:{},del:{}}, sha;
       const g=await gh("GET");
       if(g.status===200){ const j=await g.json(); sha=j.sha; try{ remote=JSON.parse(b64d(j.content)); }catch(e){ remote={docs:{},del:{}}; } }
-      else if(g.status!==404) throw new Error("GitHub said "+g.status+(g.status===401?" (check the token)":g.status===403?" (token lacks access to this repo)":""));
+      else if(g.status===404&&attempt===0){ const chk=await fetch(`https://api.github.com/repos/${cfg.repo}`,{headers:{Authorization:"Bearer "+cfg.token,Accept:"application/vnd.github+json"},cache:"no-store"}).catch(()=>null);
+        if(!chk||chk.status!==200) throw new Error("Can't see the repo "+cfg.repo+" with this token (GitHub said "+(chk?chk.status:"nothing")+"). Check the repo name and that the token was given access to it."); }
+      else if(g.status!==404) throw new Error("GitHub said "+g.status+(g.status===401?": the token isn't valid (expired, revoked or mistyped)":g.status===403?": the token lacks Contents read/write on this repo":""));
       const m=merge(S,remote); S=m; saveLS(LS,S); notify();
       const same=JSON.stringify(remote)===JSON.stringify(m);
       if(same) break;
       const p=await gh("PUT",{message:"sync from phone "+now(),content:b64e(JSON.stringify(m)),...(sha?{sha}:{})});
       if(p.status===200||p.status===201) break;
       if(p.status===409||p.status===422) continue;
-      throw new Error("GitHub said "+p.status);
+      throw new Error("GitHub refused the save ("+p.status+(p.status===403||p.status===404?": the token needs Contents set to Read and write":"")+")");
     }
-    cfg.lastSync=now(); cfg.lastErr=null; saveLS(CFG,cfg); setStatus("ok");
-  }catch(e){ cfg.lastErr=String(e.message||e); saveLS(CFG,cfg); setStatus("err"); }
+    cfg.lastSync=now(); cfg.lastErr=null; saveLS(CFG,cfg); setStatus("ok"); return "ok";
+  }catch(e){ cfg.lastErr=String(e.message||e); saveLS(CFG,cfg); setStatus("err"); return cfg.lastErr; }
   finally{ syncing=false; }
 }
 window.addEventListener("online",()=>sync());
@@ -467,8 +476,11 @@ function openSettings(){
   document.body.appendChild(el);
   el.querySelector("#wsRepo").value=cfg.repo||""; el.querySelector("#wsTok").value=cfg.token||"";
   const close=()=>el.remove(); el.querySelector(".ws-x").onclick=close; el.onclick=e=>{ if(e.target===el) close(); };
-  el.querySelector("#wsSave").onclick=async()=>{ cfg.repo=el.querySelector("#wsRepo").value.trim().replace(/^https?:\/\/github\.com\//,"").replace(/\/$/,""); cfg.token=el.querySelector("#wsTok").value.trim(); saveLS(CFG,cfg); await sync(); openSettings(); };
-  el.querySelector("#wsNow").onclick=async()=>{ await sync(); openSettings(); };
+  const run=async(btn)=>{ const st=el.querySelector("#wsStat"); btn.disabled=true; const old=btn.textContent; btn.textContent="Syncing…"; st.textContent="Talking to GitHub…";
+    const r=await sync(); btn.disabled=false; btn.textContent=old;
+    st.textContent=r==="ok"?`Synced just now. ${Object.keys(S.docs).length} records on this phone and in ${cfg.repo}.`:"Not synced: "+r; st.className="ws-s "+(r==="ok"?"ws-ok":"ws-err"); };
+  el.querySelector("#wsSave").onclick=()=>{ cfg.repo=el.querySelector("#wsRepo").value.trim().replace(/^https?:\/\/github\.com\//,"").replace(/\.git$/,"").replace(/\/$/,""); cfg.token=el.querySelector("#wsTok").value.trim(); saveLS(CFG,cfg); run(el.querySelector("#wsSave")); };
+  el.querySelector("#wsNow").onclick=()=>run(el.querySelector("#wsNow"));
   el.querySelector("#wsDl").onclick=()=>{ const blob=new Blob([JSON.stringify(S,null,1)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="wset-revision-"+new Date().toISOString().slice(0,10)+".json"; document.body.appendChild(a); a.click(); a.remove(); };
   el.querySelector("#wsUp").onchange=async e=>{ const f=e.target.files[0]; if(!f) return; try{ const j=JSON.parse(await f.text()); if(!j.docs) throw 0; S=merge(S,j); persist(); alert("Restored and merged "+Object.keys(j.docs).length+" records."); openSettings(); }catch(_){ alert("That file isn't a WSET Revision backup."); } };
 }
