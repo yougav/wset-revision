@@ -828,8 +828,8 @@ function readHash(){ const h=(location.hash||"").slice(1); let m;
   else if((m=h.match(/^att-([\w-]+)$/))){tab="history";detail={type:"att",id:m[1]};open=null;}
   else if((m=h.match(/^lo-(LO[1-6])$/))){tab="home";detail={type:"lo",lo:m[1]};open=null;}
   else {tab=VALID.includes(h)?h:"home";detail=null;open=null;} }
-window.addEventListener("hashchange",()=>{readHash();render();});
-document.querySelectorAll(".tabbar a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault(); RET=null; if(a.dataset.tab==="quiz"&&run&&!run.done){tab="quiz";detail=null;render();return;} go(a.dataset.tab);}));
+window.addEventListener("hashchange",()=>{readHash(); window.scrollTo(0,0); render();});
+document.querySelectorAll(".tabbar a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault(); RET=null; window.scrollTo(0,0); if(a.dataset.tab==="quiz"&&run&&!run.done){tab="quiz";detail=null;render();return;} go(a.dataset.tab);}));
 function render(){
   if(tab!=="atlas") showAtlas(false);
   setTimeout(drawReturn,0);
@@ -1088,8 +1088,7 @@ function topicBody(c,t,lat,gp){
   return `<div class="tbody" data-swipe="${t.key}">${ls.length?ls.map(lessonInline).join("")+`<details class="asis"><summary>Your notes, as written</summary>${notes}</details>`:notes}
     ${gp.length?`<div class="revisit"><div class="eyebrow">To revisit</div>${gp.map(x=>`<p><span>${esc(x.gap)}</span><span class="dots" title="${x.correctSince||0} of 2 correct sessions">${[0,1].map(i=>`<i class="${(x.correctSince||0)>i?"on":""}"></i>`).join("")}</span></p>`).join("")}</div>`:""}
     ${asked.length?`<details class="asis answers"><summary>Your answers · ${asked.length} of ${rows.length}</summary>${asked.map(q=>qRow(q,lat[q.id])).join("")}${notAsked?`<p class="tm">${notAsked} not tried yet</p>`:""}</details>`:""}
-    <div class="tact">${rows.length?`<button class="btn ghost" data-tq="${t.key}">Practise this topic</button>`:""}
-      <button class="btn" data-done="${t.key}">${nx?"Done · next topic ›":(isRead(c,t)?"✓ Read":"Done")}</button></div>
+    <div class="tact"><button class="btn" data-done="${t.key}">${nx?"Done · next topic ›":(isRead(c,t)?"✓ Read":"Done")}</button></div>
     <div class="tnav">${pv?`<button class="lnk" data-tgo="${pv.key}" aria-label="Previous topic: ${esc(tname(pv.name))}">‹ Previous</button>`:"<span></span>"}<span class="tm">or swipe across</span>${nx?`<button class="lnk" data-tgo="${nx.key}" aria-label="Next topic: ${esc(tname(nx.name))}">Next ›</button>`:"<span></span>"}</div></div>`;
 }
 function qRow(q,r){
