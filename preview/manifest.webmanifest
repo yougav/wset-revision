@@ -1,6 +1,6 @@
 {
- "name": "WSET Revision preview",
- "short_name": "Rev preview",
+ "name": "WSET Revision",
+ "short_name": "WSET Rev",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",

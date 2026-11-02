@@ -508,6 +508,12 @@ body.ready #loading { opacity: 0; }
 
 <div id="map" role="region" aria-label="Map of France's wine regions"></div>
 <p id="loading">Loading the map (about 30 MB the first time)…</p>
+<script>
+// inside WSET Revision: hide this page's own tabs and badge from the first paint, and say so if loading fails
+try { if (window.parent !== window) document.documentElement.classList.add('embed') } catch (e) {}
+addEventListener('error', e => { const l = document.getElementById('loading'); if (l && !document.body.classList.contains('ready')) l.textContent = "The map couldn't load. Check your connection and try again." }, true)
+addEventListener('unhandledrejection', () => { const l = document.getElementById('loading'); if (l && !document.body.classList.contains('ready')) l.textContent = "The map couldn't load. Check your connection and try again." })
+</script>
 <p id="readout" class="readout glass" hidden></p>
 <button id="back" class="top glass" type="button" hidden><img src="fonts/chevron-left.svg" alt=""><span></span></button>
 <p id="badge" class="top glass">Concept</p>

@@ -1,10 +1,10 @@
 {
-"version": "8fdac19b8f",
+"version": "fea2df6739",
 "files": [
 "app.mjs",
 "atlas-style.mjs",
 "data/basemap.wasm",
-"data/footprints/_regions.geojson",
+"data/footprints/regions.geojson",
 "data/fr-hier.wasm",
 "data/fr-hierarchy.json",
 "data/relief.wasm",

@@ -40,7 +40,7 @@ maplibregl.setWorkerUrl(url('vendor/maplibre-gl-worker.mjs'))
 
 const tree = await (await fetch(url('data/fr-hierarchy.json'))).json()
 const N = tree.nodes
-const regionsFp = (await (await fetch(url('data/footprints/_regions.geojson'))).json()).features
+const regionsFp = (await (await fetch(url('data/footprints/regions.geojson'))).json()).features
 // concept v2: what the course says about each place, organised the way the exam asks it (built by build_v2.py)
 const SL = await (await fetch(url('data/study-v2.json'))).json()
 const SP = SL.places, CH = SL.chapters, LENS = SL.lens
