@@ -792,6 +792,7 @@ const PLACE_NAMES = new Set(Object.values(N).map(n => n.name))
 function topicTitle(ch, name, grape) {
   const g = grape || CH[ch]
   if (name === 'The grape') return `${g}, the grape`
+  if (name === g || name === CH[ch]) return `About ${name}`
   if (name === 'Regions') return `Where ${g} grows`
   if (name === 'Outside France') return `${g} outside France`
   if (/^Spec:/.test(name)) return `${g}: places and label terms`

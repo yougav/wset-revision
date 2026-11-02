@@ -8,24 +8,23 @@
 <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png"><link rel="icon" href="icon-192.png">
 <title>WSET Revision</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
 <style>
 /* Layout: an app shell. Sticky header with three tabs (Home, Quiz, History) over a single 760px column.
    Home leads with the exam estimate gauge, then "what next", the 25-chapter map, exam areas and gaps; chapters and quizzes open into detail views. */
 :root{
-  --bg:#f5f3f4; --surface:#ffffff; --sunk:#efebed; --fg:#231c20; --muted:#6c6268; --line:#e3dde0;
-  --accent:#7a1f3d; --accent-soft:#f3e4ea; --next-bg:#7a1f3d; --next-fg:#ffffff; --right:#2f6b4a; --right-soft:#e3f0e8; --wrong:#a3352b; --wrong-soft:#f8e5e2; --half:#8a6414; --half-soft:#f6edd8;
-  --f-display:"Gloock", Georgia, "Times New Roman", serif;
-  --f-body:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --bg:#f4f2ee; --surface:#ffffff; --sunk:#edeae4; --fg:#1c1a17; --muted:#6e675f; --line:#e3ded6;
+  --accent:#8e2c48; --accent-soft:#f3e3e8; --next-bg:#8e2c48; --next-fg:#ffffff; --right:#1f7045; --right-soft:#e2efe7; --wrong:#b5361f; --wrong-soft:#f7e3de; --half:#9a6412; --half-soft:#f4ead9;
+  --f-display:ui-serif,"New York","Source Serif 4","Iowan Old Style",Georgia,serif;
+  --f-body:-apple-system,system-ui,"SF Pro Text","Inter","Segoe UI",Roboto,sans-serif;
+  --f-mono:-apple-system,system-ui,"SF Pro Text","Inter","Segoe UI",Roboto,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#161114; --surface:#201a1d; --sunk:#1b1518; --fg:#f0e9ec; --muted:#a99ca3; --line:#382d33;
-  --accent:#e08aa6; --accent-soft:#3a2230; --next-bg:#4a1d2f; --next-fg:#f7e9ee; --right:#7ccf9e; --right-soft:#1d3327; --wrong:#f08e83; --wrong-soft:#3d2220; --half:#e6c06b; --half-soft:#3a3020; color-scheme:dark}}
+  --bg:#0e0d0c; --surface:#1b1a18; --sunk:#151413; --fg:#f3efe8; --muted:#a8a199; --line:#2e2c29;
+  --accent:#d4849a; --accent-soft:#3a2129; --next-bg:#4a1d2f; --next-fg:#f7e9ee; --right:#56c78e; --right-soft:#16301f; --wrong:#ff7a63; --wrong-soft:#3a1d18; --half:#e3a94b; --half-soft:#352a17; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#161114; --surface:#201a1d; --sunk:#1b1518; --fg:#f0e9ec; --muted:#a99ca3; --line:#382d33;
-  --accent:#e08aa6; --accent-soft:#3a2230; --next-bg:#4a1d2f; --next-fg:#f7e9ee; --right:#7ccf9e; --right-soft:#1d3327; --wrong:#f08e83; --wrong-soft:#3d2220; --half:#e6c06b; --half-soft:#3a3020; color-scheme:dark}
+  --bg:#0e0d0c; --surface:#1b1a18; --sunk:#151413; --fg:#f3efe8; --muted:#a8a199; --line:#2e2c29;
+  --accent:#d4849a; --accent-soft:#3a2129; --next-bg:#4a1d2f; --next-fg:#f7e9ee; --right:#56c78e; --right-soft:#16301f; --wrong:#ff7a63; --wrong-soft:#3a1d18; --half:#e3a94b; --half-soft:#352a17; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.55;margin:0}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
@@ -343,6 +342,28 @@ body.lesson .tabbar,body.lesson .top{display:none}
 .lfoot{display:flex;justify-content:space-between;align-items:center;padding:10px 20px 6px;max-width:640px;width:100%;margin:0 auto}
 .lhint{font-size:14px;color:var(--muted)}
 .ldraft{margin:0;padding:4px 20px 10px;text-align:center;font-size:13px;color:var(--muted)} .ldraft button{border:0;background:none;color:var(--accent);font:inherit;font-weight:600;cursor:pointer}
+.chhead{display:flex;flex-direction:column;gap:8px;padding:4px 2px 6px}
+.chhead h1{font-weight:600;letter-spacing:-.01em}
+.chsum{margin:0;font-size:15px;color:var(--muted)}
+.chhead .bar{margin-top:6px}
+h1,h2,.brand b{font-weight:600!important;letter-spacing:-.01em}
+.secth{margin:6px 2px 8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tlist{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 16px;margin-bottom:14px}
+.tlist .thead{grid-template-columns:24px 1fr auto auto;min-height:60px}
+.tdot{width:22px;height:22px;border-radius:11px;border:1.5px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--surface)}
+.tdot.read{background:var(--right);border-color:var(--right)}
+.tlist .tl>span:first-child{font-size:16.5px}
+.tlist .tm{font-family:var(--f-body);font-size:13px}
+.sdot{display:inline-block;width:10px;height:10px;border-radius:5px;flex:none}
+.sdot.secure{background:var(--right)} .sdot.partly{background:var(--half)} .sdot.shaky{background:var(--wrong)} .sdot.none{background:transparent;box-shadow:inset 0 0 0 1.5px var(--muted)}
+.tbody{padding:0 0 16px}
+.revisit{margin:14px 0 4px;padding:12px 14px;border-radius:12px;background:var(--wrong-soft)}
+.revisit p{display:flex;justify-content:space-between;gap:10px;margin:6px 0 0;font-size:15.5px;line-height:1.4}
+.tact{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+details.answers{margin-top:12px;border-top:1px solid var(--line);padding-top:4px}
+.atlascard{flex-direction:row!important;align-items:center;justify-content:space-between;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%}
+.atlascard .ac-t{display:flex;flex-direction:column;gap:2px} .atlascard b{font-family:var(--f-display);font-weight:600;font-size:22px}
+.atlascard .sub{font-size:14.5px;color:var(--muted)} .ac-go{font-size:26px;color:var(--muted)}
 .lessonbox{margin:4px 0 12px} .lessonbox p{margin:0 0 10px;font-size:16px;line-height:1.5}
 .lessonbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:56px;border:0;border-radius:28px;background:var(--accent);color:#fff;font:inherit;font-size:16px;font-weight:600;cursor:pointer}
 .lessonbtn small{font-size:12.5px;font-weight:500;opacity:.85}
@@ -805,9 +826,10 @@ function renderHome(){
   h+=`<section class="card"><div class="cardhead"><h2>Review</h2></div>
     <p class="explain-s">Questions come back after 1, 3, 7, 21 and 60 days each time you get them right; a miss brings one back the next day. Mixed review interleaves every chapter you've covered, like the real exam.</p>
     <div class="bar"><button class="btn" id="hDue" ${s.due.length?"":"disabled"}>${s.due.length?`Review ${Math.min(20,s.due.length)} due${s.due.length>20?` of ${s.due.length}`:""}`:"Nothing due today"}</button><button class="btn ghost" id="hMix">Mixed review</button></div></section>`;
+  h+=`<button class="card atlascard" id="hAtlas"><span class="ac-t"><span class="eyebrow">Atlas</span><b>France on the map</b><span class="sub">${Object.values(ATLAS.lens).reduce((a,x)=>{x.forEach(p=>a.add(p.id));return a;},new Set()).size} key places · where each grape grows, and why</span></span><span class="ac-go" aria-hidden="true">›</span></button>`;
   h+=`<section class="card next"><div class="eyebrow">Continue</div><h2>Chapter ${nextCh}: ${esc(CHN[nextCh]||"")}</h2>
     <p class="sub">${nRead} of ${nt.length} topics read · ${nAsked} of ${nq} questions tried</p>
-    <div class="bar"><a class="btn" href="#ch-${nextCh}" data-go="#ch-${nextCh}">Study</a><button class="btn ghost" id="qNext">Quiz chapter</button></div></section>`;
+    <div class="bar"><a class="btn" href="#ch-${nextCh}" data-go="#ch-${nextCh}">Study</a><button class="btn ghost" id="qNext">Practise chapter</button></div></section>`;
   h+=`<section class="card"><div class="cardhead"><h2>Chapters</h2></div>
     <p class="explain-s">% = your first-attempt score in the chapter. The bar splits its topics: <b>secure</b> = every question right on two separate days; <b>learning</b> = right so far but not yet secure or not all tried; <b>shaky</b> = a question missed last time; <b>grey</b> = not tested yet.</p>
     <div class="map">${Object.keys(CHN).map(Number).map(c=>{
@@ -835,7 +857,7 @@ function renderHome(){
     ${rec.length?`<div class="rows">${rec.map(attRow).join("")}</div>`:`<p class="empty">No quizzes yet.</p>`}</section>`;
   V().innerHTML=h; linkify(V()); bindAttRows();
   document.getElementById("qNext").onclick=()=>quizChapters([nextCh],`Ch ${nextCh} · L2`);
-  document.getElementById("hDue").onclick=startDue; document.getElementById("hMix").onclick=()=>startMixed();
+  { const ha=document.getElementById("hAtlas"); if(ha) ha.onclick=()=>go("atlas"); } document.getElementById("hDue").onclick=startDue; document.getElementById("hMix").onclick=()=>startMixed();
   document.getElementById("allHist").onclick=()=>go("history");
   document.getElementById("gapsJump").onclick=e=>{e.preventDefault();document.getElementById("gapsCard").scrollIntoView({behavior:"smooth",block:"start"});};
 }
@@ -888,31 +910,34 @@ function drawStudy(){
   const grp=(t,a,b)=>`<div class="eyebrow grp">${t}</div>`+Array.from({length:b-a+1},(_,i)=>a+i).map(c=>{const {c:cc,html}=chapterBar(c), st=done.includes(c)?"done":c===nx?"now":"";
       const any=cc.secure+cc.partly+cc.shaky;
       return `<a class="crow ${st}" href="#ch-${c}" data-go="#ch-${c}"><span class="cn">${String(c).padStart(2,"0")}</span><span class="tl">${esc(CHN[c])}${st==="now"?` <span class="tag">next</span>`:""}</span>${html}</a>`;}).join("");
-  box.innerHTML=`<section class="card tight"><div class="cardhead"><h2>Chapters</h2><span class="legend"><span><i class="sw secure"></i>secure</span><span><i class="sw partly"></i>partly</span><span><i class="sw shaky"></i>shaky</span><span><i class="sw none"></i>not tested</span></span></div>
+  box.innerHTML=`<section class="card tight"><div class="cardhead"><h2>Chapters</h2><span class="legend"><span><i class="sw secure"></i>secure</span><span><i class="sw partly"></i>learning</span><span><i class="sw shaky"></i>shaky</span><span><i class="sw none"></i>not tested</span></span></div>
     <div class="rows">${grp("Foundations",1,5)}${grp("Grapes",6,23)}${grp("Sparkling and fortified",24,25)}</div></section>
     <section class="card tight"><details><summary>Reference: exam format and key numbers</summary>${STUDY.ref.filter(id=>CARD[id]).map(id=>cardBlock([id],CARD[id].head.replace(/^(SPEC|KEY NUMBERS): ?/,"")+(CARD[id].src?" · "+CARD[id].src:""))).join("")}</details></section>`;
   linkify(box);
 }
 
 // ---------- chapter ----------
+const tname=n=>/^Spec:/.test(n)?"Places and label terms":n;
+const STW={secure:"Secure",partly:"Learning",shaky:"Shaky",none:"Not tried yet"};
 function renderChapter(c){
-  const s=stats(), lat=s.lat, done=doneList(), st=done.includes(c)?"Done":c===nextChapter()?"In progress":"Not started"; const nRead=(TOP[c]||[]).filter(t=>isRead(c,t)).length;
+  const s=stats(), lat=s.lat; const nRead=(TOP[c]||[]).filter(t=>isRead(c,t)).length;
   const ts=TOP[c]||[], qs=BANK.filter(q=>+q.ch===c), l2=qs.filter(q=>q.level==="L2"), l3=qs.filter(q=>q.level==="L3");
-  const asked=l2.filter(q=>lat[q.id]), p=avgOf(asked.map(q=>q.id),s.fst), {c:cc,html}=chapterBar(c);
+  const asked=l2.filter(q=>lat[q.id]), {html}=chapterBar(c);
   const unseen=l2.filter(q=>!lat[q.id]), missed=qs.filter(q=>lat[q.id]&&lat[q.id].credit<1);
-  const los=[...new Set(l2.map(q=>q.lo))].map(lo=>LON[lo]).join(" · ");
   let h=`<a class="link back" href="#study" data-go="#study">‹ All chapters</a>
-  <section class="card"><div class="eyebrow">Chapter ${c} · ${st} · ${esc(los)}</div><h1>${esc(CHN[c])}</h1>
-    <div class="prog"><span class="ptext"><span>${nRead} of ${ts.length} read · ${cc.secure} of ${ts.filter(t=>t.qids.length).length} secure</span><span class="avail">${asked.length} of ${l2.length} tried${p==null?"":" · first try "+pct(p)}</span></span>${html}</div>
-    <div class="bar"><button class="btn" id="cAll">Quiz chapter</button>${unseen.length?`<button class="btn ghost" id="cNew">${unseen.length} unseen</button>`:""}${missed.length?`<button class="btn ghost" id="cMiss">${missed.length} missed</button>`:""}</div></section>
+  <header class="chhead"><div class="eyebrow">Chapter ${c}</div><h1>${esc(CHN[c])}</h1>
+    <p class="chsum">${nRead} of ${ts.length} topics read · ${asked.length} of ${l2.length} questions tried</p>${html}
+    <div class="bar"><button class="btn" id="cAll">Practise this chapter</button>${missed.length?`<button class="btn ghost" id="cMiss">${missed.length} to revisit</button>`:unseen.length?`<button class="btn ghost" id="cNew">${unseen.length} new</button>`:""}</div></header>
   ${onTheMapHtml(c)}
-  <section class="card tight"><div class="topics">${ts.map(t=>{const x=topicStatus(t), gp=gapsOn(c,t), isOpen=open===t.key;
-    return `<div class="topic ${isOpen?"open":""}"><button class="thead" data-t="${t.key}" aria-expanded="${isOpen}"><span class="tl"><span>${isRead(c,t)?`<span class="rd-tick" aria-label="read">✓</span>`:""}${esc(t.name)}</span><span class="tm">${x.n?`${x.asked} of ${x.n} tried`:"reference list"}${gp.length?` · ${gp.length} gap${gp.length>1?"s":""}`:""}</span></span>${x.n?pill(x.s):"<span></span>"}<span class="chev" aria-hidden="true">${isOpen?"⌃":"⌄"}</span></button>
-    ${isOpen?topicBody(c,t,lat,gp):""}</div>`;}).join("")}</div></section>`;
+  <h3 class="secth">Topics</h3>
+  <section class="tlist">${ts.map(t=>{const x=topicStatus(t), gp=gapsOn(c,t), isOpen=open===t.key, rd=isRead(c,t), les=lessonsFor(c,t.key).length;
+    const meta=[les?"Short lesson":"Notes", x.n?STW[x.s]:"", gp.length?`${gp.length} to revisit`:""].filter(Boolean).join(" · ");
+    return `<div class="topic ${isOpen?"open":""}"><button class="thead" data-t="${t.key}" aria-expanded="${isOpen}"><span class="tdot ${rd?"read":""}" aria-label="${rd?"read":"not read yet"}">${rd?"✓":""}</span><span class="tl"><span>${esc(tname(t.name))}</span><span class="tm">${meta}</span></span>${x.n?`<i class="sdot ${x.s}" aria-hidden="true"></i>`:"<span></span>"}<span class="chev" aria-hidden="true">${isOpen?"⌃":"⌄"}</span></button>
+    ${isOpen?topicBody(c,t,lat,gp):""}</div>`;}).join("")}</section>`;
   h+=extrasHtml(c);
   const sids=(STUDY.stretch[c]||[]).filter(id=>CARD[id]);
-  if(sids.length) h+=`<section class="card tight stretch"><button class="thead" data-t="s" aria-expanded="${open==="s"}"><span class="tl">Why: Level 3 stretch<span class="tm">${(STUDY.sgroups[c]||[]).length} cards${l3.length?` · ${l3.length} stretch questions`:""} · not examinable</span></span><span class="chev" aria-hidden="true">${open==="s"?"⌃":"⌄"}</span></button>
-    ${open==="s"?`<div class="tbody">${(STUDY.sgroups[c]||[]).map(g=>`<details><summary>${esc(g.name)}</summary>${cardBlock(g.cards,"L3 stretch · "+([...new Set(g.cards.map(id=>CARD[id].src))].join("; ")||"L3 book"))}</details>`).join("")}${l3.length?`<div class="bar"><button class="btn ghost" id="cL3">Quiz the stretch questions</button></div>`:""}</div>`:""}</section>`;
+  if(sids.length) h+=`<section class="card tight stretch"><button class="thead" data-t="s" aria-expanded="${open==="s"}"><span class="tl">Go deeper: Level 3<span class="tm">${(STUDY.sgroups[c]||[]).length} cards${l3.length?` · ${l3.length} questions`:""} · beyond Level 2</span></span><span class="chev" aria-hidden="true">${open==="s"?"⌃":"⌄"}</span></button>
+    ${open==="s"?`<div class="tbody">${(STUDY.sgroups[c]||[]).map(g=>`<details><summary>${esc(g.name)}</summary>${cardBlock(g.cards,"L3 stretch · "+([...new Set(g.cards.map(id=>CARD[id].src))].join("; ")||"L3 book"))}</details>`).join("")}${l3.length?`<div class="bar"><button class="btn ghost" id="cL3">Practise the Level 3 questions</button></div>`:""}</div>`:""}</section>`;
   V().innerHTML=h; linkify(V());
   V().querySelectorAll(".thead").forEach(b=>b.onclick=()=>{ open=open===b.dataset.t?null:b.dataset.t; try{history.replaceState(null,"",hashFor());}catch(e){} renderChapter(c); });
   const lab=`Ch ${c}`;
@@ -923,33 +948,33 @@ function renderChapter(c){
   V().querySelectorAll("[data-lesson]").forEach(b=>b.onclick=()=>openLesson(b.dataset.lesson));
   V().querySelectorAll("[data-mapplace]").forEach(b=>b.onclick=()=>{ setReturn(CHN[c],"#ch-"+c+(open&&open!=="s"?"/"+open:"")); atlasCall("openPlace",b.dataset.mapplace); });
   V().querySelectorAll("[data-maplens]").forEach(b=>b.onclick=()=>{ setReturn(CHN[c],"#ch-"+c); atlasCall("setLens",+b.dataset.maplens); });
-  V().querySelectorAll("[data-tq]").forEach(b=>b.onclick=()=>{ const t=ts.find(x=>x.key===b.dataset.tq); const ids=[...t.qids.filter(id=>!lat[id]||lat[id].credit<1),...shuffle(t.qids.filter(id=>lat[id]&&lat[id].credit===1))]; startQuiz(ids.slice(0,10),`${lab} · ${t.name}`); });
+  V().querySelectorAll("[data-tq]").forEach(b=>b.onclick=()=>{ const t=ts.find(x=>x.key===b.dataset.tq); const ids=[...t.qids.filter(id=>!lat[id]||lat[id].credit<1),...shuffle(t.qids.filter(id=>lat[id]&&lat[id].credit===1))]; startQuiz(ids.slice(0,10),`${lab} · ${tname(t.name)}`); });
   V().querySelectorAll("[data-rd]").forEach(b=>b.onclick=async()=>{ const was=isRead(c,{key:b.dataset.rd}); await toggleRead(c,b.dataset.rd); if(!was){ const i=ts.findIndex(x=>x.key===b.dataset.rd); open=ts[i+1]?ts[i+1].key:null; try{history.replaceState(null,"",hashFor());}catch(e){} } renderChapter(c); });
   if(open&&open!=="s"){ const el=V().querySelector(".topic.open"); if(el) el.scrollIntoView({block:"start"}); }
 }
 function extrasHtml(c){ let h=""; const cmp=(STUDY.compare||{})[c];
-  if(cmp) h+=`<section class="card tight"><details class="xtra"><summary><span class="tl">Compare styles<span class="tm">${cmp.rows.length} regions and styles side by side · ${esc(cmp.src||"L2 cards")}</span></span></summary>
+  if(cmp) h+=`<section class="card tight"><details class="xtra"><summary><span class="tl">Compare styles<span class="tm">${cmp.rows.length} wines side by side</span></span></summary>
     <div class="cmpwrap"><table class="cmp"><thead><tr>${cmp.cols.map(x=>`<th>${esc(x)}</th>`).join("")}</tr></thead><tbody>${cmp.rows.map(r=>`<tr>${r.map((x,i)=>i?`<td>${esc(x)}</td>`:`<th scope="row">${esc(x)}</th>`).join("")}</tr>`).join("")}</tbody></table></div></details></section>`;
-  for(const [k,m] of Object.entries(STUDY.maps||{})){ if(!(m.chapters||[]).map(Number).includes(c)) continue;
+  for(const [k,m] of Object.entries(STUDY.maps||{})){ if(!(m.chapters||[]).map(Number).includes(c)) continue; if((ATLAS.lens[c]||[]).length&&/Burgundy|Bordeaux|Loire|Rh[oô]ne|Champagne|Alsace|France/i.test(m.title)) continue;
     h+=`<section class="card tight"><details class="xtra"><summary><span class="tl">Map: ${esc(m.title)}<span class="tm">Schematic, not to scale</span></span></summary>
       <div class="schem ${m.axis==="west-east"?"we":"ns"}"><span class="compass">${m.axis==="west-east"?"West ← → East":"↑ North"}</span>${m.groups.map(g=>`<div class="sg"><div class="sgl">${esc(g.label)}</div><div class="sgi">${(g.items||[]).map(i=>`<span>${esc(i)}</span>`).join("")}</div></div>`).join("")}${m.axis==="west-east"?"":`<span class="compass">↓ South</span>`}</div>
       ${m.note?`<p class="foot">${esc(m.note)}</p>`:""}</details></section>`; }
   return h; }
-function specBlock(c){ const s=STUDY.spec[c]||[]; return `<div class="cardtext"><div class="ctl">L2 specification · what the exam can ask for this chapter</div>${s.map(g=>`<div class="spg"><div class="term">${esc(g.g)}</div><dl>${g.r.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${v.split(" · ").map(x=>`<span>${esc(x)}</span>`).join("")}</dd>`).join("")}</dl></div>`).join("")}</div>`; }
+function specBlock(c){ const s=STUDY.spec[c]||[]; return `<div class="cardtext"><div class="ctl">Places and terms to know</div>${s.map(g=>`<div class="spg"><div class="term">${esc(g.g)}</div><dl>${g.r.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${v.split(" · ").map(x=>`<span>${esc(x)}</span>`).join("")}</dd>`).join("")}</dl></div>`).join("")}</div>`; }
 function topicBody(c,t,lat,gp){
   const rows=t.qids.map(id=>byId[id]).sort((a,b)=>((lat[a.id]?lat[a.id].credit:2)-(lat[b.id]?lat[b.id].credit:2)));
   const src=[...new Set(t.cards.map(id=>CARD[id]&&CARD[id].src).filter(Boolean))].join("; ");
   const asked=rows.filter(q=>lat[q.id]), notAsked=rows.length-asked.length;
-  const ls=lessonsFor(c,t.key), notes=t.spec?specBlock(c):cardBlock(t.cards,"L2 card · "+(src||"L2 book"));
+  const ls=lessonsFor(c,t.key), notes=t.spec?specBlock(c):cardBlock(t.cards,"Your notes · "+(src||"L2 book").replace(/^L2 book /,""));
   return `<div class="tbody">${ls.length?ls.map(lessonEntryHtml).join("")+`<details class="asis"><summary>Your notes, as written</summary>${notes}</details>`:notes}
-    ${gp.map(x=>`<div class="gapnote"><span>Gap: ${esc(x.gap)}</span><span class="dots" title="${x.correctSince||0} of 2 correct sessions">${[0,1].map(i=>`<i class="${(x.correctSince||0)>i?"on":""}"></i>`).join("")}</span></div>`).join("")}
-    ${rows.length?`<div class="qlist">${asked.length?`<div class="eyebrow">Your questions</div>${asked.map(q=>qRow(q,lat[q.id])).join("")}`:""}${notAsked?`<p class="tm">${notAsked} question${notAsked>1?"s":""} not asked yet</p>`:""}</div>
-    `:""}<div class="bar">${rows.length?`<button class="btn" data-tq="${t.key}">Quiz this topic</button>`:""}<button class="btn ghost" data-rd="${t.key}">${isRead(c,t)?"✓ Read":"Mark as read"}</button></div></div>`;
+    ${gp.length?`<div class="revisit"><div class="eyebrow">To revisit</div>${gp.map(x=>`<p><span>${esc(x.gap)}</span><span class="dots" title="${x.correctSince||0} of 2 correct sessions">${[0,1].map(i=>`<i class="${(x.correctSince||0)>i?"on":""}"></i>`).join("")}</span></p>`).join("")}</div>`:""}
+    <div class="tact">${rows.length?`<button class="btn" data-tq="${t.key}">Practise this topic</button>`:""}<button class="btn ghost" data-rd="${t.key}">${isRead(c,t)?"✓ Read":"Mark as read"}</button></div>
+    ${asked.length?`<details class="asis answers"><summary>Your answers · ${asked.length} of ${rows.length}</summary>${asked.map(q=>qRow(q,lat[q.id])).join("")}${notAsked?`<p class="tm">${notAsked} not tried yet</p>`:""}</details>`:""}</div>`;
 }
 function qRow(q,r){
   const c=r.credit===1?"var(--right)":r.credit===0.5?"var(--half)":"var(--wrong)", t=r.credit===1?"✓":r.credit===0.5?"½":"✕";
   return `<div class="qrow"><span class="mk" style="background:${c}" aria-label="${r.credit===1?"right":r.credit===0.5?"half":"wrong"}">${t}</span>
-    <span>${esc(q.topic)}<br><span class="qid">${esc(q.id)}${q.level==="L3"?" · stretch":""}${r.credit<1&&r.pick&&r.pick!=="open"?` · you said ${r.pick}, answer ${q.answer}`:""}</span></span>
+    <span>${esc(q.topic)}${q.level==="L3"||(r.credit<1&&r.pick&&r.pick!=="open")?`<br><span class="qid">${q.level==="L3"?"Level 3":""}${q.level==="L3"&&r.credit<1&&r.pick&&r.pick!=="open"?" · ":""}${r.credit<1&&r.pick&&r.pick!=="open"?`you said ${r.pick.toUpperCase()}, answer ${q.answer.toUpperCase()}`:""}</span>`:""}</span>
     <span class="qid">${dshort(r.at)}</span></div>`;
 }
 
