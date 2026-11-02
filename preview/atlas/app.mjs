@@ -800,15 +800,15 @@ function topicTitle(ch, name, grape) {
 }
 const topicName = name => /^Spec:/.test(name) ? 'Places and label terms' : name
 const lessonsFor = (ch, key) => Object.keys(DECKS).filter(d => (DECKS[d].topics || []).includes(ch + '|' + key))
+/** Where to study this place: links into Study topics, each with its read tick. The lessons themselves live in Study (D46, 2 Nov). */
 function studyBlock(id) {
   const { via, rows } = studyLinks(id)
-  const own = DECKS[id], gr = Object.fromEntries(grapesOf(via || id).map(e => [e.ch, e.grape]))
-  if (!rows.length && !own) return ''
-  return `<h3 class="group">In Study</h3>
-    ${own ? `<button class="qbtn lesson-btn" type="button" data-lesson="${id}">${lessonRead(id) ? 'Read again' : `Read about ${esc(N[id].name)}`}<small>${own.cards.length} short cards · about ${minutes(own.cards.length)} min${lessonRead(id) ? ' · ✓ read' : ''}</small></button>` : ''}
-    ${via ? `<p class="note">Covered with ${esc(N[via].name)}.</p>` : ''}
-    ${rows.length ? `<div class="rows">${rows.map(r =>
-    `<button class="trow" type="button" data-study="${r.ch}|${r.k}"><span class="pn">${esc(topicTitle(r.ch, r.name, gr[r.ch]))}</span><span></span><span class="chev-r" aria-hidden="true">›</span></button>`).join('')}</div>` : ''}`
+  if (!rows.length) return ''
+  const gr = Object.fromEntries(grapesOf(via || id).map(e => [e.ch, e.grape]))
+  const read = r => BR ? BR.isRead(r.ch, r.k) : readTopics.has(r.ch + '|' + r.k)
+  const lesson = r => lessonsFor(r.ch, r.k).length > 0
+  return `<h3 class="group">Study it</h3>${via ? `<p class="note">Covered with ${esc(N[via].name)}.</p>` : ''}<div class="rows">${rows.map(r =>
+    `<button class="trow" type="button" data-study="${r.ch}|${r.k}"><span class="tt"><span class="pn">${esc(topicTitle(r.ch, r.name, gr[r.ch]))}</span>${lesson(r) ? '<small>Short lesson</small>' : ''}</span><span class="rdk">${read(r) ? '✓ Read' : ''}</span><span class="chev-r" aria-hidden="true">›</span></button>`).join('')}</div>`
 }
 function knownFor(id) {
   const g = grapesOf(id)
@@ -1130,13 +1130,12 @@ window.__N = N
 function quizInApp(id) {
   const all = (SP[id]?.qids || []).filter(q => BR.question(q)), sh = a => a.map(x => [Math.random(), x]).sort((a, b) => a[0] - b[0]).map(x => x[1])
   const miss = all.filter(q => QS[q] && QS[q].last < 1)
-  BR.quiz([...sh(miss), ...sh(all.filter(q => !miss.includes(q)))].slice(0, 10), N[id].name)
+  BR.quiz([...sh(miss), ...sh(all.filter(q => !miss.includes(q)))].slice(0, 10), N[id].name, { id, name: N[id].name })
 }
 if (BR) {
   window.__atlas = {
     openPlace: id => { closeMenu(); openPlace(id) },
     setLens: ch => setLens(ch),
-    openLesson: (id, back) => openLesson(id, back || 'study'),
     refresh: () => { applyProgress(); applyFocus(); renderUI() },
   }
   applyProgress()
