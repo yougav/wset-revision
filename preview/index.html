@@ -364,6 +364,49 @@ details.answers{margin-top:12px;border-top:1px solid var(--line);padding-top:4px
 .atlascard{flex-direction:row!important;align-items:center;justify-content:space-between;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%}
 .atlascard .ac-t{display:flex;flex-direction:column;gap:2px} .atlascard b{font-family:var(--f-display);font-weight:600;font-size:22px}
 .atlascard .sub{font-size:14.5px;color:var(--muted)} .ac-go{font-size:26px;color:var(--muted)}
+.linline{margin:2px 0 6px}
+.llead{font-size:17.5px;line-height:1.5;margin:4px 0 14px;font-weight:500}
+.lsec{padding:14px 0;border-top:1px solid var(--line)}
+.lsec .lkind{margin:0 0 4px;font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
+.lsec h4{margin:0 0 8px;font-family:var(--f-display);font-weight:600;font-size:20px;line-height:1.25}
+.lsec p{margin:0 0 10px;font-size:16.5px;line-height:1.55} .lsec p:last-child{margin-bottom:0}
+.lsec .why1 .wc,.lsec .why1 .we{font-size:16.5px}
+.lsrcline,.ldraft2{font-size:13px!important;color:var(--muted);margin:10px 0 0!important}
+.lnk{border:0;background:none;padding:0;color:var(--accent);font:inherit;font-weight:600;cursor:pointer}
+.tact{justify-content:space-between}
+.tnav{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:14px;font-size:14px}
+.tnav .tm{font-size:12px}
+.pcard .sub{margin:0}
+.cmpcard{flex-direction:row!important;align-items:center;justify-content:space-between;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%;margin-bottom:14px}
+.cmpcard .ac-t{display:flex;flex-direction:column;gap:2px} .cmpcard b{font-family:var(--f-display);font-weight:600;font-size:20px}
+.cmpcard .sub{font-size:14px;color:var(--muted)}
+#cmpOv{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;flex-direction:column;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+#cmpOv[hidden]{display:none}
+.cmpttl{display:flex;flex-direction:column} .cmpttl b{font-family:var(--f-display);font-size:20px;font-weight:600}
+.seg3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:8px 16px 4px;padding:2px;border-radius:10px;background:var(--sunk)}
+.seg3 button{border:0;background:none;padding:7px 4px;border-radius:8px;font:inherit;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer}
+.seg3 button[aria-selected="true"]{background:var(--surface);color:var(--fg);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.cmpbody{flex:1;overflow-y:auto;padding:10px 16px 24px}
+.cmpintro{font-size:14px;color:var(--muted);margin:4px 0 12px} .cmpintro.c{text-align:center}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:6px 14px 10px;margin-bottom:14px}
+.axis{display:grid;grid-template-columns:1fr 184px;gap:10px;align-items:end;padding:8px 0 6px;border-bottom:1px solid var(--line)}
+.axis .al{font-weight:600;font-size:15px}
+.ticks{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;font-size:10.5px;color:var(--muted);text-align:center} .ticks b{font-weight:600}
+.ticks.two{grid-template-columns:1fr 1fr} .ticks.two b:first-child{text-align:left} .ticks.two b:last-child{text-align:right}
+.crow2{display:grid;grid-template-columns:1fr 184px;gap:10px;align-items:center;width:100%;padding:9px 0;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.crow2:last-child{border-bottom:0}
+.wn{font-size:14.5px;font-weight:600;line-height:1.3;display:flex;flex-direction:column} .wn small{font-weight:400;color:var(--muted);font-size:12.5px}
+.cells{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:3px} .cells i{height:10px;border-radius:5px;background:var(--sunk)} .cells i.on{background:var(--accent)}
+.cnote{font-size:13.5px;color:var(--muted);margin:8px 0 0}
+.cmph{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 2px 8px}
+.cl{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 14px}
+.clrow{display:flex;flex-direction:column;gap:2px;width:100%;padding:10px 0;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;font:inherit;color:inherit;cursor:pointer} .clrow:last-child{border-bottom:0}
+.clrow b{font-size:14.5px} .clrow span{font-size:14px;color:var(--muted)}
+.wtrack{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 8px;margin:0 -16px;-webkit-overflow-scrolling:touch}
+.wcard{flex:0 0 calc(100% - 44px);scroll-snap-align:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+.wcard h3{margin:0 0 10px;font-family:var(--f-display);font-weight:600;font-size:21px;line-height:1.25}
+.wf{margin:0 0 10px;font-size:15.5px;line-height:1.45} .wf span:first-child{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.wf .cells{display:inline-grid;width:110px;vertical-align:middle;margin-right:6px}
 .lessonbox{margin:4px 0 12px} .lessonbox p{margin:0 0 10px;font-size:16px;line-height:1.5}
 .lessonbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;min-height:56px;border:0;border-radius:28px;background:var(--accent);color:#fff;font:inherit;font-size:16px;font-weight:600;cursor:pointer}
 .lessonbtn small{font-size:12.5px;font-weight:500;opacity:.85}
@@ -571,6 +614,7 @@ if("serviceWorker" in navigator && location.hostname!=="localhost" && location.h
 <div id="atlasHost" class="off"></div>
 <button id="retPill" type="button" hidden></button>
 <section id="lessonOv" hidden aria-label="Lesson"></section>
+<section id="cmpOv" hidden aria-label="Compare styles"></section>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <nav class="tabbar" aria-label="Sections">
   <a href="#home" data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
@@ -709,7 +753,7 @@ window.__wsetBridge={
 let RET=null; // {label, hash} or {label, place}
 function setReturn(label,hash,place){ RET={label,hash,place,from:tab}; }
 function drawReturn(){ const b=document.getElementById("retPill"); const quizzing=tab==="quiz"&&run&&!run.done;
-  const show=RET&&tab!==RET.from&&!quizzing&&!LES; b.hidden=!show; if(!show) return;
+  const show=RET&&tab!==RET.from&&!quizzing&&!LES&&!CMP; b.hidden=!show; if(!show) return;
   b.innerHTML=`<span aria-hidden="true">‹</span> ${esc(RET.label)}${RET.place?` <small>on the map</small>`:""}`;
   b.classList.toggle("onmap",tab==="atlas"); }
 document.getElementById("retPill").onclick=()=>{ const r=RET; RET=null; if(r.place) atlasCall("openPlace",r.place); else location.hash=r.hash; drawReturn(); };
@@ -752,6 +796,10 @@ document.getElementById("lessonOv").addEventListener("click",async e=>{ const t=
   if(t.closest("[data-lcheck]")){ const s=checkedSet(); s.has(LES.d)?s.delete(LES.d):s.add(LES.d); try{ localStorage.setItem("atlas-checked",JSON.stringify([...s])); }catch(e){} return drawLesson(); }
   if(t.closest("[data-lmap]")){ const d=LES.d, back=LES.back; closeLesson(); setReturn("Study: "+ATLAS.decks[d].title,back); atlasCall("openPlace",d); }
 });
+document.getElementById("cmpOv").addEventListener("click",e=>{ const t=e.target; if(!CMP) return;
+  if(t.closest("[data-cx]")) return closeCompare();
+  const v=t.closest("[data-cv]"); if(v){ CMP.view=v.dataset.cv; return drawCompare(); }
+  const w=t.closest("[data-wine]"); if(w){ CMP.view="wines"; CMP.at=+w.dataset.wine; return drawCompare(); } });
 // swipe between cards
 { let x0=null; const ov=document.getElementById("lessonOv");
   ov.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; },{passive:true});
@@ -927,13 +975,16 @@ function renderChapter(c){
   let h=`<a class="link back" href="#study" data-go="#study">‹ All chapters</a>
   <header class="chhead"><div class="eyebrow">Chapter ${c}</div><h1>${esc(CHN[c])}</h1>
     <p class="chsum">${nRead} of ${ts.length} topics read · ${asked.length} of ${l2.length} questions tried</p>${html}
-    <div class="bar"><button class="btn" id="cAll">Practise this chapter</button>${missed.length?`<button class="btn ghost" id="cMiss">${missed.length} to revisit</button>`:unseen.length?`<button class="btn ghost" id="cNew">${unseen.length} new</button>`:""}</div></header>
-  ${onTheMapHtml(c)}
+  </header>
+  ${onTheMapHtml(c)}${compareCardHtml(c)}
   <h3 class="secth">Topics</h3>
   <section class="tlist">${ts.map(t=>{const x=topicStatus(t), gp=gapsOn(c,t), isOpen=open===t.key, rd=isRead(c,t), les=lessonsFor(c,t.key).length;
     const meta=[les?"Short lesson":"Notes", x.n?STW[x.s]:"", gp.length?`${gp.length} to revisit`:""].filter(Boolean).join(" · ");
     return `<div class="topic ${isOpen?"open":""}"><button class="thead" data-t="${t.key}" aria-expanded="${isOpen}"><span class="tdot ${rd?"read":""}" aria-label="${rd?"read":"not read yet"}">${rd?"✓":""}</span><span class="tl"><span>${esc(tname(t.name))}</span><span class="tm">${meta}</span></span>${x.n?`<i class="sdot ${x.s}" aria-hidden="true"></i>`:"<span></span>"}<span class="chev" aria-hidden="true">${isOpen?"⌃":"⌄"}</span></button>
     ${isOpen?topicBody(c,t,lat,gp):""}</div>`;}).join("")}</section>`;
+  h+=`<section class="card pcard"><div class="cardhead"><h2>Practise ${esc(CHN[c])}</h2></div>
+    <p class="sub">${l2.length} questions · ${asked.length} tried${missed.length?` · ${missed.length} to revisit`:""}</p>
+    <div class="bar"><button class="btn" id="cAll">Practise this chapter</button>${missed.length?`<button class="btn ghost" id="cMiss">${missed.length} to revisit</button>`:""}${unseen.length?`<button class="btn ghost" id="cNew">${unseen.length} new</button>`:""}</div></section>`;
   h+=extrasHtml(c);
   const sids=(STUDY.stretch[c]||[]).filter(id=>CARD[id]);
   if(sids.length) h+=`<section class="card tight stretch"><button class="thead" data-t="s" aria-expanded="${open==="s"}"><span class="tl">Go deeper: Level 3<span class="tm">${(STUDY.sgroups[c]||[]).length} cards${l3.length?` · ${l3.length} questions`:""} · beyond Level 2</span></span><span class="chev" aria-hidden="true">${open==="s"?"⌃":"⌄"}</span></button>
@@ -945,31 +996,89 @@ function renderChapter(c){
   const n=document.getElementById("cNew"); if(n) n.onclick=()=>startQuiz(shuffle(unseen).slice(0,10).map(q=>q.id),"New: "+lab);
   const m=document.getElementById("cMiss"); if(m) m.onclick=()=>startQuiz(shuffle(missed).map(q=>q.id),"Missed: "+lab);
   const l=document.getElementById("cL3"); if(l) l.onclick=()=>startQuiz(shuffle(l3).slice(0,10).map(q=>q.id),lab+" · L3 stretch");
-  V().querySelectorAll("[data-lesson]").forEach(b=>b.onclick=()=>openLesson(b.dataset.lesson));
+  const openTopic=k=>{ open=k; try{history.replaceState(null,"",hashFor());}catch(e){} renderChapter(c); };
+  V().querySelectorAll("[data-tgo]").forEach(b=>b.onclick=()=>openTopic(b.dataset.tgo));
+  V().querySelectorAll("[data-done]").forEach(b=>b.onclick=async()=>{ const k=b.dataset.done, i=ts.findIndex(x=>x.key===k); if(!isRead(c,{key:k})) await toggleRead(c,k); openTopic(ts[i+1]?ts[i+1].key:null); });
+  V().querySelectorAll("[data-lcheck2]").forEach(b=>b.onclick=()=>{ const d=b.dataset.lcheck2, st=checkedSet(); st.has(d)?st.delete(d):st.add(d); try{ localStorage.setItem("atlas-checked",JSON.stringify([...st])); }catch(e){} renderChapter(c); });
+  V().querySelectorAll("[data-lmap2]").forEach(b=>b.onclick=()=>{ setReturn(CHN[c],"#ch-"+c+(open?"/"+open:"")); atlasCall("openPlace",b.dataset.lmap2); });
+  V().querySelectorAll("[data-cmp]").forEach(b=>b.onclick=()=>openCompare(c));
+  { const tb=V().querySelector(".tbody[data-swipe]"); if(tb){ let x0=null,y0=null;
+    tb.addEventListener("touchstart",e=>{ x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+    tb.addEventListener("touchend",e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+      if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx)*0.6) return; const i=ts.findIndex(x=>x.key===open); const to=ts[dx<0?i+1:i-1]; if(to) openTopic(to.key); },{passive:true}); } }
   V().querySelectorAll("[data-mapplace]").forEach(b=>b.onclick=()=>{ setReturn(CHN[c],"#ch-"+c+(open&&open!=="s"?"/"+open:"")); atlasCall("openPlace",b.dataset.mapplace); });
   V().querySelectorAll("[data-maplens]").forEach(b=>b.onclick=()=>{ setReturn(CHN[c],"#ch-"+c); atlasCall("setLens",+b.dataset.maplens); });
   V().querySelectorAll("[data-tq]").forEach(b=>b.onclick=()=>{ const t=ts.find(x=>x.key===b.dataset.tq); const ids=[...t.qids.filter(id=>!lat[id]||lat[id].credit<1),...shuffle(t.qids.filter(id=>lat[id]&&lat[id].credit===1))]; startQuiz(ids.slice(0,10),`${lab} · ${tname(t.name)}`); });
   V().querySelectorAll("[data-rd]").forEach(b=>b.onclick=async()=>{ const was=isRead(c,{key:b.dataset.rd}); await toggleRead(c,b.dataset.rd); if(!was){ const i=ts.findIndex(x=>x.key===b.dataset.rd); open=ts[i+1]?ts[i+1].key:null; try{history.replaceState(null,"",hashFor());}catch(e){} } renderChapter(c); });
   if(open&&open!=="s"){ const el=V().querySelector(".topic.open"); if(el) el.scrollIntoView({block:"start"}); }
 }
-function extrasHtml(c){ let h=""; const cmp=(STUDY.compare||{})[c];
-  if(cmp) h+=`<section class="card tight"><details class="xtra"><summary><span class="tl">Compare styles<span class="tm">${cmp.rows.length} wines side by side</span></span></summary>
-    <div class="cmpwrap"><table class="cmp"><thead><tr>${cmp.cols.map(x=>`<th>${esc(x)}</th>`).join("")}</tr></thead><tbody>${cmp.rows.map(r=>`<tr>${r.map((x,i)=>i?`<td>${esc(x)}</td>`:`<th scope="row">${esc(x)}</th>`).join("")}</tr>`).join("")}</tbody></table></div></details></section>`;
+// ---------- Compare styles: phone-friendly views of the chapter's comparison table (only what the table states) ----------
+const CMPLV={low:1,light:1,lighter:null,medium:3,high:4,full:5,"very high":5};
+function cmpRange(v){ const t=String(v||"").toLowerCase().trim(); const m=t.match(/^(very high|low|light|medium|high|full)(?:\s+to\s+(very high|low|light|medium|high|full))?$/); if(!m) return null; const a=CMPLV[m[1]], b=CMPLV[m[2]||m[1]]; return [Math.min(a,b),Math.max(a,b)]; }
+const CLIM=["cool","moderate","warm","hot"];
+// "cool nights" or "cool southern breezes" describe a cooling influence, not the climate band, so they don't count
+function climBand(v){ const t=String(v||"").toLowerCase(); const hit=CLIM.map((w,i)=>new RegExp("\\b"+w+"\\b(?!\\s+(?:nights?|breezes?|southern|winds?|currents?)\\b)").test(t)?i:-1).filter(i=>i>=0); return hit.length?[Math.min(...hit),Math.max(...hit)]:null; }
+function cmpData(c){ const t=(STUDY.compare||{})[c]; if(!t) return null; const col=k=>t.cols.indexOf(k);
+  const wines=t.rows.map((r,i)=>({i,name:r[0],climate:r[col("Climate")]||"",band:climBand(r[col("Climate")]),body:col("Body")>=0?r[col("Body")]:"",acidity:r[col("Acidity")]||"",tannin:col("Tannin")>=0?r[col("Tannin")]:"",flavours:r[col("Key flavours")]||"",making:r[col("Oak / making")]||"",note:r[col("Quality / note")]||""}));
+  return {t,wines}; }
+function compareCardHtml(c){ const d=cmpData(c); if(!d) return ""; const w=d.wines;
+  return `<button class="card cmpcard" data-cmp="${c}"><span class="ac-t"><span class="eyebrow">Compare styles</span><b>${w.length} wines side by side</b><span class="sub">Climate, structure and flavours, from your notes</span></span><span class="ac-go" aria-hidden="true">›</span></button>`; }
+let CMP=null;
+function openCompare(c){ CMP={c,view:"climate",at:0}; document.body.classList.add("lesson"); drawCompare(); drawReturn(); }
+function closeCompare(){ CMP=null; document.getElementById("cmpOv").hidden=true; document.body.classList.remove("lesson"); render(); }
+function cells(lo,hi,n){ return `<span class="cells">${Array.from({length:n},(_,k)=>`<i class="${k+1>=lo&&k+1<=hi?"on":""}"></i>`).join("")}</span>`; }
+function drawCompare(){ const {wines:W}=cmpData(CMP.c), ov=document.getElementById("cmpOv"); ov.hidden=false; let body="";
+  if(CMP.view==="climate"){ const withB=W.filter(w=>w.band).sort((a,b)=>a.band[0]-b.band[0]||a.band[1]-b.band[1]), rest=W.filter(w=>!w.band&&w.climate);
+    body=`<p class="cmpintro">Where your notes name a climate band, each wine sits on a cool to hot scale.</p>
+      <div class="chart"><div class="axis"><span></span><span class="ticks">${CLIM.map(x=>`<b>${x[0].toUpperCase()+x.slice(1)}</b>`).join("")}</span></div>
+      ${withB.map(w=>`<button class="crow2" data-wine="${w.i}"><span class="wn">${esc(w.name)}</span>${cells(w.band[0]+1,w.band[1]+1,4)}</button>`).join("")}</div>
+      ${rest.length?`<h4 class="cmph">What shapes the climate</h4><div class="cl">${rest.map(w=>`<button class="clrow" data-wine="${w.i}"><b>${esc(w.name)}</b><span>${esc(w.climate)}</span></button>`).join("")}</div>`:""}`; }
+  else if(CMP.view==="structure"){ const att=[["Body","body","Light","Full"],["Acidity","acidity","Low","High"],["Tannin","tannin","Low","High"]];
+    body=`<p class="cmpintro">Only the wines your notes give a level for.</p>`+att.map(([lab,k,lo,hi])=>{ const ws=W.filter(w=>cmpRange(w[k])); const other=W.filter(w=>w[k]&&!cmpRange(w[k]));
+      if(!ws.length&&!other.length) return "";
+      return `<div class="chart"><div class="axis"><span class="al">${lab}</span><span class="ticks two"><b>${lo}</b><b>${hi}</b></span></div>
+        ${ws.map(w=>{const r=cmpRange(w[k]); return `<button class="crow2" data-wine="${w.i}"><span class="wn">${esc(w.name)}<small>${esc(w[k])}</small></span>${cells(r[0],r[1],5)}</button>`;}).join("")}
+        ${other.map(w=>`<p class="cnote"><b>${esc(w.name)}:</b> ${esc(w[k])}</p>`).join("")}</div>`; }).join(""); }
+  else { body=`<div class="wtrack">${W.map(w=>`<article class="wcard" id="wc-${w.i}"><h3>${esc(w.name)}</h3>
+      ${w.climate?`<p class="wf"><span>Climate</span>${esc(w.climate)}</p>`:""}
+      ${["body","acidity","tannin"].filter(k=>w[k]).map(k=>{const r=cmpRange(w[k]); return `<p class="wf"><span>${k[0].toUpperCase()+k.slice(1)}</span>${r?cells(r[0],r[1],5):""} ${esc(w[k])}</p>`;}).join("")}
+      ${w.flavours?`<p class="wf"><span>Flavours</span>${esc(w.flavours)}</p>`:""}${w.making?`<p class="wf"><span>Making</span>${esc(w.making)}</p>`:""}${w.note?`<p class="wf"><span>Note</span>${esc(w.note)}</p>`:""}
+      </article>`).join("")}</div><p class="cmpintro c">Swipe across · ${W.length} wines</p>`; }
+  ov.innerHTML=`<div class="lhead"><button class="lx" data-cx aria-label="Close">✕</button><div class="cmpttl"><span class="eyebrow">Compare styles</span><b>${esc(CHN[CMP.c])}</b></div></div>
+    <div class="seg3" role="tablist">${[["climate","Climate"],["structure","Structure"],["wines","Each wine"]].map(([k,t])=>`<button role="tab" aria-selected="${CMP.view===k}" data-cv="${k}">${t}</button>`).join("")}</div>
+    <div class="cmpbody">${body}</div>`;
+  if(CMP.view==="wines"){ const el=document.getElementById("wc-"+CMP.at); if(el) el.parentNode.scrollLeft=el.offsetLeft-16; } }
+function extrasHtml(c){ let h="";
   for(const [k,m] of Object.entries(STUDY.maps||{})){ if(!(m.chapters||[]).map(Number).includes(c)) continue; if((ATLAS.lens[c]||[]).length&&/Burgundy|Bordeaux|Loire|Rh[oô]ne|Champagne|Alsace|France/i.test(m.title)) continue;
     h+=`<section class="card tight"><details class="xtra"><summary><span class="tl">Map: ${esc(m.title)}<span class="tm">Schematic, not to scale</span></span></summary>
       <div class="schem ${m.axis==="west-east"?"we":"ns"}"><span class="compass">${m.axis==="west-east"?"West ← → East":"↑ North"}</span>${m.groups.map(g=>`<div class="sg"><div class="sgl">${esc(g.label)}</div><div class="sgi">${(g.items||[]).map(i=>`<span>${esc(i)}</span>`).join("")}</div></div>`).join("")}${m.axis==="west-east"?"":`<span class="compass">↓ South</span>`}</div>
       ${m.note?`<p class="foot">${esc(m.note)}</p>`:""}</details></section>`; }
   return h; }
 function specBlock(c){ const s=STUDY.spec[c]||[]; return `<div class="cardtext"><div class="ctl">Places and terms to know</div>${s.map(g=>`<div class="spg"><div class="term">${esc(g.g)}</div><dl>${g.r.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${v.split(" · ").map(x=>`<span>${esc(x)}</span>`).join("")}</dd>`).join("")}</dl></div>`).join("")}</div>`; }
+/** A lesson laid out inline: its short sections one after another, no end question (Gavin, 2 Nov). */
+function lessonInline(d){ const x=ATLAS.decks[d], ck=checkedSet().has(d);
+  const secs=x.cards.filter(c=>c.type!=="check").map(c=>{ const ps=(c.body||[]).map(t=>`<p>${esc(t)}</p>`).join(""); let inner;
+    if(c.type==="why") inner=`<div class="why1"><p class="wl">Because</p><p class="wc">${esc(c.pair.cause)}</p><p class="wl so">So</p><p class="we">${esc(c.pair.effect)}</p></div>`;
+    else if(c.type==="banks") inner=["left","right"].map(k=>`<div class="bank"><b>${esc(c[k].head)}</b><p>${esc(c[k].body)}</p></div>`).join("");
+    else if(c.type==="wine") inner=ps+((c.scales||[]).length?`<div class="dscales">${c.scales.map(([k,v,lo,hi])=>`<div class="drow"><span>${k}</span><span class="scale">${[1,2,3,4,5].map(n=>`<i class="${n>=lo&&n<=hi?"on":""}"></i>`).join("")}</span><em>${esc(v)}</em></div>`).join("")}</div>`:"");
+    else inner=ps;
+    return `<section class="lsec ${c.type}"><p class="lkind">${LKIND[c.type]}</p>${c.title?`<h4>${esc(c.title)}</h4>`:""}${inner}</section>`; }).join("");
+  const srcs=shortSrc(x,[...new Set(x.cards.flatMap(c=>c.sources||[]))]);
+  return `<div class="linline"><p class="llead">${esc(x.lead)}</p>${secs}
+    <p class="lsrcline">From your cards: ${esc(srcs)}${x.place?` · <button class="lnk" data-lmap2="${d}">${esc(x.title)} on the map ›</button>`:""}</p>
+    <p class="ldraft2">${ck?"✓ You checked this.":"Draft, rewritten from your cards."} <button class="lnk" data-lcheck2="${d}">${ck?"Undo":"Looks right"}</button></p></div>`; }
 function topicBody(c,t,lat,gp){
   const rows=t.qids.map(id=>byId[id]).sort((a,b)=>((lat[a.id]?lat[a.id].credit:2)-(lat[b.id]?lat[b.id].credit:2)));
   const src=[...new Set(t.cards.map(id=>CARD[id]&&CARD[id].src).filter(Boolean))].join("; ");
   const asked=rows.filter(q=>lat[q.id]), notAsked=rows.length-asked.length;
   const ls=lessonsFor(c,t.key), notes=t.spec?specBlock(c):cardBlock(t.cards,"Your notes · "+(src||"L2 book").replace(/^L2 book /,""));
-  return `<div class="tbody">${ls.length?ls.map(lessonEntryHtml).join("")+`<details class="asis"><summary>Your notes, as written</summary>${notes}</details>`:notes}
+  const ts=TOP[c]||[], i=ts.findIndex(x=>x.key===t.key), nx=ts[i+1], pv=ts[i-1];
+  return `<div class="tbody" data-swipe="${t.key}">${ls.length?ls.map(lessonInline).join("")+`<details class="asis"><summary>Your notes, as written</summary>${notes}</details>`:notes}
     ${gp.length?`<div class="revisit"><div class="eyebrow">To revisit</div>${gp.map(x=>`<p><span>${esc(x.gap)}</span><span class="dots" title="${x.correctSince||0} of 2 correct sessions">${[0,1].map(i=>`<i class="${(x.correctSince||0)>i?"on":""}"></i>`).join("")}</span></p>`).join("")}</div>`:""}
-    <div class="tact">${rows.length?`<button class="btn" data-tq="${t.key}">Practise this topic</button>`:""}<button class="btn ghost" data-rd="${t.key}">${isRead(c,t)?"✓ Read":"Mark as read"}</button></div>
-    ${asked.length?`<details class="asis answers"><summary>Your answers · ${asked.length} of ${rows.length}</summary>${asked.map(q=>qRow(q,lat[q.id])).join("")}${notAsked?`<p class="tm">${notAsked} not tried yet</p>`:""}</details>`:""}</div>`;
+    ${asked.length?`<details class="asis answers"><summary>Your answers · ${asked.length} of ${rows.length}</summary>${asked.map(q=>qRow(q,lat[q.id])).join("")}${notAsked?`<p class="tm">${notAsked} not tried yet</p>`:""}</details>`:""}
+    <div class="tact">${rows.length?`<button class="btn ghost" data-tq="${t.key}">Practise this topic</button>`:""}
+      <button class="btn" data-done="${t.key}">${nx?"Done · next topic ›":(isRead(c,t)?"✓ Read":"Done")}</button></div>
+    <div class="tnav">${pv?`<button class="lnk" data-tgo="${pv.key}" aria-label="Previous topic: ${esc(tname(pv.name))}">‹ Previous</button>`:"<span></span>"}<span class="tm">or swipe across</span>${nx?`<button class="lnk" data-tgo="${nx.key}" aria-label="Next topic: ${esc(tname(nx.name))}">Next ›</button>`:"<span></span>"}</div></div>`;
 }
 function qRow(q,r){
   const c=r.credit===1?"var(--right)":r.credit===0.5?"var(--half)":"var(--wrong)", t=r.credit===1?"✓":r.credit===0.5?"½":"✕";
